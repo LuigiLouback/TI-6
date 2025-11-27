@@ -1,8 +1,8 @@
-# 🎨 AI Art Classifier - Detector de Arte por IA vs Humana
+#  AI Art Classifier - Detector de Arte por IA vs Humana
 
 Sistema completo de classificação de imagens que identifica se uma arte foi criada por humanos ou por Inteligência Artificial. A aplicação consiste em uma API FastAPI com modelo de Deep Learning e um servidor MCP (Model Context Protocol) para integração com Claude Desktop.
 
-## 📋 Índice
+##  Índice
 
 - [Visão Geral](#visão-geral)
 - [Arquitetura](#arquitetura)
@@ -16,7 +16,7 @@ Sistema completo de classificação de imagens que identifica se uma arte foi cr
 
 ---
 
-## 🔍 Visão Geral
+##  Visão Geral
 
 Este projeto utiliza um modelo de Deep Learning baseado em ResNet50 com uma branch adicional de análise de textura para classificar imagens de arte. O sistema oferece:
 
@@ -25,7 +25,7 @@ Este projeto utiliza um modelo de Deep Learning baseado em ResNet50 com uma bran
 - ✅ Análise de confiança e probabilidades
 - ✅ Suporte a GPU (CUDA) e CPU
 
-## 🏗️ Arquitetura
+##  Arquitetura
 
 ```
 ┌─────────────────────────┐
@@ -50,7 +50,7 @@ Este projeto utiliza um modelo de Deep Learning baseado em ResNet50 com uma bran
 
 ---
 
-## 📦 Pré-requisitos
+##  Pré-requisitos
 
 ### Software Necessário
 
@@ -70,7 +70,7 @@ As principais bibliotecas necessárias são:
 
 ---
 
-## 🚀 Instalação
+##  Instalação
 
 ### 1. Clone ou Baixe o Projeto
 
@@ -98,13 +98,13 @@ pip install torch torchvision
 ### 3. Verifique os Arquivos
 
 Certifique-se de que os seguintes arquivos estão na pasta:
-- ✅ `server.py` - API FastAPI
-- ✅ `ai_art_classifier_remote.py` - Servidor MCP
-- ✅ `ai_vs_human_weights.pt` - Pesos do modelo treinado
+-  `server.py` - API FastAPI
+-  `ai_art_classifier_remote.py` - Servidor MCP
+-  `ai_vs_human_weights.pt` - Pesos do modelo treinado
 
 ---
 
-## 🎮 Como Executar
+##  Como Executar
 
 ### Passo 1: Iniciar a API FastAPI
 
@@ -125,7 +125,7 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8001
 ```
 
-**✅ A API está rodando!** Mantenha este terminal aberto.
+** A API está rodando!** Mantenha este terminal aberto.
 
 ### Passo 2: Testar a API (Opcional)
 
@@ -135,7 +135,7 @@ Você verá informações sobre a API.
 
 ---
 
-## ⚙️ Configuração do MCP no Claude Desktop
+##  Configuração do MCP no Claude Desktop
 
 Esta é a parte **mais importante** para integrar o classificador com o Claude Desktop.
 
@@ -180,7 +180,7 @@ O arquivo de configuração do Claude Desktop está em:
 }
 ```
 
-**⚠️ IMPORTANTE:** Ajuste o caminho completo do arquivo `ai_art_classifier_remote.py` de acordo com onde você salvou o projeto!
+** IMPORTANTE:** Ajuste o caminho completo do arquivo `ai_art_classifier_remote.py` de acordo com onde você salvou o projeto!
 
 **Exemplos de caminhos:**
 - Windows: `"C:\\Users\\SeuUsuario\\Desktop\\ti\\ai_art_classifier_remote.py"`
