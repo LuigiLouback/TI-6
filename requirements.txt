@@ -1,0 +1,28 @@
+# Deep Learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# Image Processing
+Pillow>=10.0.0
+
+# HTTP Client
+httpx>=0.25.0
+
+# MCP Protocol
+fastmcp>=0.1.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+
+
+
+
+
+
+
+
