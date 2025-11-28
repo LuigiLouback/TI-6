@@ -2,6 +2,17 @@ fastapi
 uvicorn[standard]
 pillow
 python-multipart
+httpx
+fastmcp
+numpy
+pandas
+matplotlib
+opencv-python
+tensorflow
+keras-tuner
+kagglehub
+tqdm
+scikit-learn
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.9.1+cpu
 torchvision==0.24.1+cpu

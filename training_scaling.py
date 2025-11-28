@@ -1,7 +1,4 @@
-"""
-Benchmarks de Escalabilidade Forte e Fraca para Treinamento
-Testa diferentes configurações de num_workers no DataLoader
-"""
+#Benchmarks de Escalabilidade Forte e Fraca para Treinamento
 
 import argparse
 import json
@@ -201,13 +198,22 @@ def run_training(
     for rep in range(repetitions):
         print(f"  Repetição {rep + 1}/{repetitions}...", end=" ", flush=True)
         
-        train_loader = DataLoader(
-            dataset,
-            batch_size=batch_size,
-            shuffle=shuffle,
-            num_workers=num_workers,
-            pin_memory=(device.type == "cuda")
-        )
+        # Configurações otimizadas para paralelismo
+        loader_kwargs = {
+            "batch_size": batch_size,
+            "shuffle": shuffle,
+            "num_workers": num_workers,
+            "pin_memory": (device.type == "cuda"),
+        }
+        
+        # Otimizações apenas quando usando workers
+        if num_workers > 0:
+            loader_kwargs["persistent_workers"] = True
+            # Prefetch maior para mais workers
+            loader_kwargs["prefetch_factor"] = max(4, num_workers // 2)
+            loader_kwargs["multiprocessing_context"] = 'spawn'
+        
+        train_loader = DataLoader(dataset, **loader_kwargs)
         
         duration = run_training_once(train_loader, device, epochs)
         durations.append(duration)
@@ -411,14 +417,14 @@ def main(argv: Sequence[str]) -> int:
     )
     parser.add_argument(
         "--workers",
-        default="0,1,2,4",
+        default="0,1,2,4,6,8,12,16",
         help="Lista de quantidades de workers separados por vírgula. Ex: 0,1,2,4,8 (0 = sequencial)",
     )
     parser.add_argument(
         "--batch-size",
         type=int,
-        default=32,
-        help="Tamanho do batch para treinamento.",
+        default=128,
+        help="Tamanho do batch para treinamento. Valores maiores (128-256) melhoram paralelismo com mais workers.",
     )
     parser.add_argument(
         "--epochs",
